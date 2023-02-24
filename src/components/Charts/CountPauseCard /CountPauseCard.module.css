@@ -1,0 +1,8 @@
+.inActiveIcon path {
+    stroke: var(--gray-c4);
+}
+
+
+.stopActive path {
+    stroke: var(--sky)
+}

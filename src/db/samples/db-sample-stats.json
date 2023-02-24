@@ -1,0 +1,6 @@
+[
+    {"type":"pomodoro", "datetime":123123123213, "value":1},
+    {"type":"break", "datetime":123123123213, "value":1},
+    {"type":"breakTime", "datetime":123123123213, "value":1},
+    {"type":"workTime", "datetime":123123123213, "value":1}
+]

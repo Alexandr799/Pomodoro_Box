@@ -1,0 +1,226 @@
+@font-face {
+    font-family: 'San Francisco(SF UI)';
+    src: local('San Francisco(SF UI) Display Regular'), local('San-Francisco(SF-UI)-Display-Regular'),
+        url('../fonts/SFUIDisplay-Regular.woff2') format('woff2'),
+        url('../fonts/SFUIDisplay-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'San Francisco(SF UI)';
+    src: local('San Francisco(SF UI) Display Bold'), local('San-Francisco(SF-UI)-Display-Bold'),
+        url('../fonts/SFUIDisplay-Bold.woff2') format('woff2'),
+        url('../fonts/SFUIDisplay-Bold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'San Francisco(SF UI)';
+    src: local('San Francisco(SF UI) Display Medium'), local('San-Francisco(SF-UI)-Display-Medium'),
+        url('../fonts/SFUIDisplay-Medium.woff2') format('woff2'),
+        url('../fonts/SFUIDisplay-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'San Francisco(SF UI)';
+    src: local('San Francisco(SF UI) Display Thin'), local('San-Francisco(SF-UI)-Display-Thin'),
+        url('../fonts/SFUIDisplay-Thin.woff2') format('woff2'),
+        url('../fonts/SFUIDisplay-Thin.woff') format('woff');
+    font-weight: 200;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'San Francisco(SF UI)';
+    src: local('San Francisco(SF UI) Display Light'), local('San-Francisco(SF-UI)-Display-Light'),
+        url('../fonts/SFUIDisplay-Light.woff2') format('woff2'),
+        url('../fonts/SFUIDisplay-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+}
+img {
+    max-width: 100%;
+}
+
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    color: var(--black);
+    font-family: 'San Francisco(SF UI)', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    --black: #333333;
+    --white: #FFFFFF;
+    --white1: #F4F4F4;
+    --white2: #d3d2d2;
+    --white3: #E4E4E4;
+    --red-light: #e7b2a8;
+    --red: #DC3E22;
+    --red-hard:#B7280F;
+    --green-light: #A8B64F;
+    --green-middle: #899441;
+    --gray: #999999;
+    --grayC4: #C4C4C4;
+    --gray-de:#DEDEDE;
+    --sky:#7FC2D7;
+    --light-orange:#FFDDA9;
+    --orange:#FFAE35;
+    --violet:#9C97D7;
+    --sky-light:#C5F1FF;
+    --violet-hard:#DFDCFE;
+    --shadow:rgba(0, 0, 0, 0.07);
+}
+
+
+html[data-thema='dark'] {
+    --black: #FFFFFF;
+    --white: #333333;
+    --white1: #252525;
+    --white2: #1f1e1e;
+    --white3: #181717;
+    --red: #DC3E22;
+    --red-hard:#B7280F;
+    --green-light: #A8B64F;
+    --green-middle: #899441;
+    --gray: #999999;
+    --grayC4: #C4C4C4;
+    --gray-de:#333333;
+    --sky:#12acdb;
+    --light-orange:#db9c3e;
+    --orange:#995e05;
+    --violet:#5e53d3;
+    --sky-light:#6cc0da;
+    --violet-hard:#6a62c9;
+    --shadow:rgba(255, 255, 255, 0.3);
+}
+
+
+
+body {
+    background-color: var(--white);
+}
+
+
+*:focus-visible,
+*::after:focus-visible,
+*::before:focus-visible {
+    outline: none;
+}
+
+
+button {
+    background-color: transparent;
+    color: inherit;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+button:disabled {
+    cursor: default;
+}
+
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+
+input {
+    background: var(--white1);
+    border: none;
+    
+}
+
+input::placeholder {
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 17px;
+}
+
+input:focus-visible {
+    outline: none;
+    background-color: var(--white2);
+}
+
+.primary-button {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 17px;
+    color: var(--white);
+    transition: background-color 0.3 ease-in-out;
+    background-color: var(--green-light);
+}
+
+.primary-button:hover {
+    background-color: var(--green-middle);
+    transition: background-color 0.3 ease-in-out;
+}
+
+.secondary-button {
+    background-color: transparent;
+    border: 2px solid var(--red);
+    color: var(--red);
+}
+
+.secondary-button:hover {
+    color: var(--white);
+    background-color: var(--red);
+    transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.secondary-button:disabled, 
+.primary-button:disabled {
+    color: var(--grayC4);
+    background-color: transparent;
+    border-color: var(--grayC4);
+} 
+
+
+#modal {
+    z-index: 10;
+    position: relative;
+}
+
+
+.dangerous-button {
+    color: #FFFFFF;
+    background-color: var(--red);
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 17px;
+    transition:background-color .3s ease-in-out ;
+}
+
+.dangerous-button:hover {
+    transition: background-color .3s ease-in-out;
+    background-color: var(--red-hard);
+}
+
+@media (max-width:1300px) {
+    .container {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+}

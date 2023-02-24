@@ -1,0 +1,45 @@
+.tomatoCounter {
+    width: 100%;
+    background-color: var(--white1);
+}
+
+.bottom {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 33px;
+    text-align: center;
+    padding: 9px;
+    color: var(--white);
+    background-color: var(--red);
+}
+
+.contentWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 0 23px 0;
+}
+
+.content {
+    display: flex;
+    align-items: center;
+}
+
+.tomato {
+    margin-right: 10px;
+}
+
+.count {
+    font-size: 24px;
+    line-height: 33px;
+    color: var(--gray);
+}
+
+.tomatofaceWrapper {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 0 32px 0;
+}

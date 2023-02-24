@@ -1,0 +1,15 @@
+.edittedForm {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.submitbutton, .skipButton {
+    padding: 10px 15px;
+}
+
+.inputForm {
+    font-size: 16px;
+    line-height: 17px;
+    flex-grow: 1;
+}

@@ -1,0 +1,33 @@
+.switcher {
+    position: relative;
+    margin: 0 10px;
+    width: 50px; 
+    height: 25px;
+    border-radius: 25px;
+    background: var(--white3);
+    outline: 0;
+    -webkit-appearance: none;
+    cursor: pointer;
+  }
+  
+  
+  .switcher::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    display: block;
+    width: calc((100% - 4px) / 2);
+    height: calc(100% - 4px);
+    border-radius: 50%;
+    background: var(--red);
+    transition: all .1s linear;
+  }
+  
+  .switcher:checked {
+    background: var(--red-light);
+  }
+  
+  .switcher:checked::after {
+    transform: translateX(100%);
+  }

@@ -1,0 +1,95 @@
+.container {
+    padding-top: 100px;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.step::before {
+    content: "•";
+    color: var(--red);
+    margin-right: 15px;
+}
+
+.step {
+    font-size: 16px;
+    line-height: 33px;
+}
+
+.listBlock {
+    max-width: 500px;
+}
+
+.timerWindows {
+    width: 733px;
+}
+
+.title {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 33px;
+}
+
+.routemap {
+    margin-bottom: 25px;
+}
+
+.formWrapper {
+    margin-bottom: 25px;
+}
+
+@media (max-width:1300px) {
+    .timerWindows {
+        width: 500px;
+    }
+}
+
+@media (max-width:1300px) {
+    .timerWindows {
+        width: 600px;
+    }
+
+    .listBlock {
+        max-width: 400px;
+    }
+}
+
+
+@media (max-width:1170px) {
+
+    .container {
+        padding-top: 40px;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding-bottom: 40px;
+    }
+    
+    .timerWindows {
+        width: 80%;
+        order: -1;
+        margin-bottom: 30px;
+    }
+
+    .listBlock {
+        max-width: 100%;
+    }
+}
+
+
+@media (max-width:768px) {
+    .timerWindows {
+        width: 100%;
+        order: -1;
+        margin-bottom: 30px;
+    }
+
+    .title {
+        font-size: 19px;
+        line-height: 26px;
+    }
+
+    .step {
+        font-size: 13px;
+        line-height: 22px;
+    }
+}

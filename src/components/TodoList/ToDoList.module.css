@@ -1,0 +1,52 @@
+.item {
+    border-bottom: 1px solid var(--white3);
+}
+
+.item:first-child {
+    border-top:  1px solid var(--white3);
+}
+
+.disabledList {
+    position: relative;
+}
+
+
+.disabledList::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: transparent;
+}
+
+.totalTime {
+    padding-top: 19px;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 17px;
+    color: var(--gray);
+}
+
+.itemEnterDone {
+  opacity: 1;
+  transition: opacity 300ms ease-in;
+}
+
+.itemEnterActive {
+  opacity: 0;
+}
+
+.itemExit {
+  opacity: 0;
+  transition: opacity 300ms ease-in;
+}
+
+.itemExitActive {
+  opacity: 1;
+  transition: opacity 300ms ease-in;
+}
+
+
+

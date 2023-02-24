@@ -1,0 +1,7 @@
+.inActiveIcon path {
+    stroke: var(--grayC4);
+}
+
+.clockActive path {
+    stroke: var(--violet);
+}

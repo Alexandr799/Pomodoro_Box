@@ -1,0 +1,7 @@
+.inActiveIcon path {
+    stroke: var(--gray-c4);
+}
+
+.focusActive path {
+    stroke: var(--orange);
+}

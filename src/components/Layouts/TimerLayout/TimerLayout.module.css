@@ -1,0 +1,151 @@
+.timer {
+    width: 100%;
+}
+
+.header {
+    padding: 19px 40px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.titleTodo {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 17px;
+    color: var(--white);
+}
+
+.infoTodo {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 17px;
+    color: var(--white);
+}
+
+.headerGray {
+    background-color: var(--grayC4);
+}
+
+.headerRed {
+    background-color: var(--red);
+}
+
+.headerGreen {
+    background-color: var(--green-light);
+}
+
+.workPlace {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 70px;
+    padding-bottom: 107px;
+    background-color: var(--white1);
+}
+
+.clock {
+    font-weight: 200;
+    font-size: 150px;
+    line-height: 179px;
+    color: var(--black);
+    position: relative;
+}
+
+.task {
+    margin-bottom: 32px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 17px;
+    color: var(--gray);
+}
+
+.titleTask {
+    color: var(--black);
+}
+
+.buttonStart {
+    padding: 19px 50px;
+    margin-right: 25px;
+}
+
+.buttonStop {
+    padding: 17px 48px;
+}
+
+.plusButtonTime {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: -50px;
+    font-size: 0;
+}
+
+.plusButtonTime circle {
+    fill: var(--grayC4);
+    transition: fill .3s ease-in-out;
+}
+
+.plusButtonTime:hover circle {
+    fill: var(--green-middle);
+    transition: fill .3s ease-in-out;
+}
+
+.plusButtonTime:disabled circle {
+    fill: var(--grayC4);
+}
+
+.table {
+    transform: scale(1);
+    display: inline-block;
+    transition: transform 0.4s linear;
+}
+
+
+@media (max-width:1170px) {
+    .workPlace {
+        padding-top: 20px;
+        padding-bottom: 30px;
+    }
+}
+
+
+@media (max-width:600px) {
+    .workPlace {
+        padding-top: 10px;
+        padding-bottom: 20px;
+    }
+
+
+    .clock {
+        font-weight: 200;
+        font-size: 70px;
+        line-height: 109px;
+        color: var(--black);
+        position: relative;
+    }
+
+    .buttonStart {
+        padding: 7px 20px;
+    }
+
+    .buttonStop {
+        padding: 5px 28px;
+    }
+
+}
+
+@media (max-width:420px) {
+
+    .clock {
+        padding-top: 50px;
+        display: inline-block;
+    }
+
+    .plusButtonTime {
+        position: absolute;
+        top: 30px;
+        transform: translate(-50%, -50%);
+        left: 50%;
+        font-size: 0;
+    }
+}

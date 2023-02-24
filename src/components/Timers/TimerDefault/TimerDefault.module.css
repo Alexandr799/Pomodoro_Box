@@ -1,0 +1,19 @@
+
+.timerEnterDone {
+    transform: scale(1);
+    transition: transform 500ms ease-in;
+}
+
+.timerEnterActive  {
+    transform: scale(0.5);
+}
+
+.timerExit {
+    transform: scale(0.5);
+    transition: transform 500ms ease-in;
+}
+
+.timerExitActive {
+    transform: scale(1);
+    transition: transform 500ms ease-in;
+}
