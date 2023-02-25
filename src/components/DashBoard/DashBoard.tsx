@@ -7,7 +7,7 @@ import 'chart.js/auto';
 import WeekBar from '../Charts/WeekBar';
 import FocusCard from '../Charts/FocusCard';
 import TimePauseCard from '../Charts/TimePauseCard/TimePauseCard';
-import CountPauseCard from '../Charts/CountPauseCard ';
+import CountPauseCard from '../Charts/CountPauseCard';
 import TomatoCounter from '../Charts/TomatoCounter';
 import DayCard from '../Charts/DayCard/DayCard';
 import { useDispatch, useSelector } from 'react-redux';
