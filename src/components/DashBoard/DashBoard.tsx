@@ -65,7 +65,7 @@ const DashBoard = () => {
 					<TomatoCounter tomatoCount={tomatoCount} />
 				</div>
 				<div className={css.card}>
-					<FocusCard tail={workTime} total={workTime + breakTime} />
+					<FocusCard tail={workTime} secondTail={breakTime} />
 				</div>
 				<div className={css.card}>
 					<TimePauseCard time={breakTime} />

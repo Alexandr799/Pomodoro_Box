@@ -4,11 +4,15 @@ import css from './FocusCard.module.css';
 
 interface IFocusCard {
 	tail: number;
-	total: number;
+	secondTail: number;
 }
 
-const FocusCard = ({ tail, total }: IFocusCard) => {
-	const content = tail && total ? Math.floor((tail / total) * 100) : 0;
+const FocusCard = ({ tail, secondTail }: IFocusCard) => {
+    const total = tail+ secondTail
+	const content =
+		tail && secondTail + tail
+			? Math.floor((Math.ceil(tail / 60) / (Math.ceil(tail / 60) + Math.ceil(secondTail / 60))) * 100)
+			: 0;
 	const color = !total ? 'var(--white1)' : 'var(--light-orange)';
 	const className = !total ? css.inActiveIcon : css.focusActive;
 	return <CardStat title={'Фокус'} content={`${content}%`} color={color} Icon={<Focus className={className} />} />;
