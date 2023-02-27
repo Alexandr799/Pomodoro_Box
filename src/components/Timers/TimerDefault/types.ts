@@ -12,8 +12,9 @@ export interface ITimer {
 	pauseCallBack?: () => void;
 	resetOnDuringCallback?: () => void;
 	resetOnPauseCallback?: () => void;
+    resumeCallBack?:()=>void;
 	Layout: (props: ITimerLayout) => JSX.Element;
-    resumeWord:string
+    secondButtonText?:string
 }
 
 export interface ITimerLayout  {
@@ -29,5 +30,5 @@ export interface ITimerLayout  {
 	resumeCallBack: () => void;
 	decrementTime: () => void;
 	timerTable: string;
-    resumeWord:string;
+    secondButtonText?:string;
 }

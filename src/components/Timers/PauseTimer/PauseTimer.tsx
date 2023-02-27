@@ -6,7 +6,7 @@ import changeReadOnlyTodo from '../../../redux/actions/toDoActionts/changeReadOn
 import changeTimerType from '../../../redux/actions/timersActionts/changeTimerType';
 import editTodo from '../../../redux/actions/toDoActionts/editTodo';
 import markTime from '../../../redux/actions/timersActionts/markTime';
-import {  useState } from 'react';
+import { useState } from 'react';
 import { IToDo } from '../../../db/types';
 import now from '../../../utils/now';
 import notifyMe from '../../../utils/notifyMe';
@@ -16,25 +16,31 @@ import useSound from 'use-sound';
 const PauseTimer = () => {
 	const [play, { stop }] = useSound(song);
 	const toDolistCurrent = useSelector<IRootState, IToDo[]>((state) => state.toDo.toDoList)[0];
-	const [cleanWorkingTime, setCleanWorkingTime] = useState(0);
-	const [startTime, setStartTime] = useState(0);
+	const [breakTime, setBreakTime] = useState(0);
 
-	const startCallBack = () => setStartTime(now());
+	const pauseCallback = () => setBreakTime(now());
 
-	const pauseCallback = () => setCleanWorkingTime(cleanWorkingTime + (now() - startTime));
+    const resumeCallBack = ()=>{
+        dispatch(markTime(now() - breakTime, 'break'));
+        setBreakTime(0)
+    }
 
 	const dispatch = useDispatch();
+    
 	const endCallback = () => {
-		dispatch(markTime(cleanWorkingTime + (now() - startTime)));
-		setCleanWorkingTime(0);
 		dispatch(editTodo(toDolistCurrent.id, { breakCounter: toDolistCurrent.breakCounter + 1 }));
 		dispatch(changeTimerType('WorkTimer'));
 		dispatch(changeReadOnlyTodo(false));
-		notifyMe('Подмидор закончился время отдохнуть!', ()=>play(), ()=>stop());
+		notifyMe(
+			'Подмидор закончился время отдохнуть!',
+			() => play(),
+			() => stop()
+		);
 	};
+
 	const resetOnPauseCallback = () => {
-		dispatch(markTime(cleanWorkingTime));
-		setCleanWorkingTime(0);
+		dispatch(markTime(now() - breakTime, 'break'));
+		setBreakTime(0);
 		dispatch(editTodo(toDolistCurrent.id, { breakCounter: toDolistCurrent.breakCounter + 1 }));
 		dispatch(changeTimerType('WorkTimer'));
 		dispatch(changeReadOnlyTodo(false));
@@ -56,9 +62,9 @@ const PauseTimer = () => {
 					resetOnDuringCallback={resetOnDurringCallback}
 					resetOnPauseCallback={resetOnPauseCallback}
 					endCallBack={endCallback}
-					startCallBack={startCallBack}
 					pauseCallBack={pauseCallback}
-                    resumeWord={'Пропустить'}
+					secondButtonText={'Пропустить'}
+                    resumeCallBack={resumeCallBack}
 				/>
 			)}
 		</>

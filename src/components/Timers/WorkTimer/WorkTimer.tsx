@@ -16,31 +16,35 @@ import useSound from 'use-sound';
 
 const WorkTimer = () => {
 	const [play, { stop }] = useSound(song);
-
 	const toDolistCurrent = useSelector<IRootState, IToDo[]>((state) => state.toDo.toDoList)[0];
-	const [cleanWorkingTime, setCleanWorkingTime] = useState(0);
 	const [startTime, setStartTime] = useState(0);
+	const [breakTime, setbreakTime] = useState(0);
 	const dispatch = useDispatch();
+
 	const startCallBack = () => {
 		setStartTime(now());
 		dispatch(changeReadOnlyTodo(true));
 	};
 
 	const pauseCallback = () => {
-		setCleanWorkingTime(cleanWorkingTime + (now() - startTime));
+		dispatch(markTime(now() - startTime, 'work'));
+		setStartTime(0);
+		setbreakTime(now());
 	};
 
 	const resetOnPauseCallback = () => {
-		dispatch(markTime(cleanWorkingTime));
-		setCleanWorkingTime(0);
+		dispatch(markTime(now() - breakTime, 'break'));
+		setbreakTime(0);
 		dispatch(editTodo(toDolistCurrent.id, { tomatoCounter: toDolistCurrent.tomatoCounter + 1 }));
 		dispatch(deleteTodo(toDolistCurrent.id));
 		dispatch(changeReadOnlyTodo(false));
 	};
 
 	const endCallback = () => {
-		dispatch(markTime(cleanWorkingTime + (now() - startTime)));
-		setCleanWorkingTime(0);
+		if (startTime !== 0) {
+			dispatch(markTime(now() - startTime, 'work'));
+			setStartTime(0);
+		}
 		dispatch(editTodo(toDolistCurrent.id, { tomatoCounter: toDolistCurrent.tomatoCounter + 1 }));
 		if (toDolistCurrent.tomatoCounter >= toDolistCurrent.leftoverTomatoes - 1) {
 			dispatch(deleteTodo(toDolistCurrent.id));
@@ -48,12 +52,22 @@ const WorkTimer = () => {
 		} else {
 			dispatch(changeTimerType('PauseTimer'));
 		}
-		notifyMe('Подмидор закончился время отдохнуть!', ()=>play(), ()=>stop());
+		notifyMe('Подмидор окончился время отдохнуть!',() => play(),() => stop()
+		);
 	};
 
 	const resetOnDurringCallback = () => {
-		setCleanWorkingTime(0);
+        dispatch(markTime(now() - startTime, 'work'));
+        setStartTime(0);
+		dispatch(editTodo(toDolistCurrent.id, { tomatoCounter: toDolistCurrent.tomatoCounter + 1 }));
+        dispatch(deleteTodo(toDolistCurrent.id));
 		dispatch(changeReadOnlyTodo(false));
+	};
+
+	const resumeCallBack = () => {
+		dispatch(markTime(now() - breakTime, 'break'));
+		setbreakTime(0);
+		setStartTime(now());
 	};
 
 	return (
@@ -63,7 +77,7 @@ const WorkTimer = () => {
 					color={'var(--red)'}
 					timerStatus={'default'}
 					title={toDolistCurrent.title}
-					minutsDuration={25}
+					minutsDuration={0.1}
 					subtitle={`Помидоров ${toDolistCurrent.tomatoCounter}`}
 					taskName={toDolistCurrent.title}
 					Layout={TimerLayout}
@@ -72,7 +86,7 @@ const WorkTimer = () => {
 					resetOnPauseCallback={resetOnPauseCallback}
 					resetOnDuringCallback={resetOnDurringCallback}
 					pauseCallBack={pauseCallback}
-                    resumeWord={'Сделано'}
+					resumeCallBack={resumeCallBack}
 				/>
 			)}
 		</>

@@ -16,7 +16,7 @@ const TimerLayout = ({
 	resetOnPauseCallback,
 	resumeCallBack,
 	pauseCallBack,
-    resumeWord
+    secondButtonText
 }: ITimerLayout) => {
 	return (
 		<div className={css.timer}>
@@ -56,7 +56,7 @@ const TimerLayout = ({
 								Продолжить
 							</button>
 							<button onClick={resetOnPauseCallback} className={classNameJoiner('secondary-button', css.buttonStop)}>
-								{resumeWord}
+								{secondButtonText || 'Стоп'}
 							</button>
 						</>
 					)}
@@ -67,7 +67,7 @@ const TimerLayout = ({
 								Пауза
 							</button>
 							<button onClick={resetOnDuringCallback} className={classNameJoiner('secondary-button', css.buttonStop)}>
-								Стоп
+                                {secondButtonText || 'Сделано'}
 							</button>
 						</>
 					)}

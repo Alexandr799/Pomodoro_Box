@@ -8,16 +8,17 @@ const pushStatictic: Middleware = (store) => (next) => (action) => {
 		case EActionTypes.EDIT_TO_DO:
 			if (action.change.includes('tomatoCounter'))
 				storageApi().pushDBStat({ type: 'pomodoro', datetime: now(), value: 1 });
-			if (action.change.includes('breakCounter'))
-				storageApi().pushDBStat({ type: 'break', datetime: now(), value: 1 });
 			next(action);
 			break;
 		case EActionTypes.MARK_TIME:
-			const timerType = store.getState().timer.timerType;
-			if (timerType === 'WorkTimer')
+			const timerType = action.typeTime;
+			if (timerType === 'work') {
 				storageApi().pushDBStat({ type: 'workTime', datetime: now(), value: action.time });
-			if (timerType === 'PauseTimer')
+			}
+			if (timerType === 'break') {
+				storageApi().pushDBStat({ type: 'break', datetime: now(), value: 1 });
 				storageApi().pushDBStat({ type: 'breakTime', datetime: now(), value: action.time });
+			}
 			next(action);
 			break;
 		default:

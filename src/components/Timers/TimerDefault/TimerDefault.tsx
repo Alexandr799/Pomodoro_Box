@@ -16,8 +16,9 @@ const TimerDefault = ({
 	resetOnDuringCallback = () => {},
 	resetOnPauseCallback = () => {},
 	pauseCallBack = () => {},
+    resumeCallBack=()=>{},
 	Layout,
-    resumeWord
+    secondButtonText
 }: ITimer) => {
 	const [timerTable, minutCount, updateTimer, setSecond] = useTimerTable(minutsDuration, 1);
 	const [active, setTimerStatus] = useState<TActive>(timerStatus);
@@ -43,6 +44,7 @@ const TimerDefault = ({
 	};
 
 	const resume = () => {
+        resumeCallBack()
 		setTimerStatus('during');
 	};
 
@@ -53,7 +55,7 @@ const TimerDefault = ({
 		if (active === 'onpause') {
 			pauseCallBack();
 		}
-		// eslint-disable-next-line react-hooks/exhaustive-deps
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [active]);
 
 	useEffect(() => {
@@ -82,7 +84,7 @@ const TimerDefault = ({
 			color={color}
 			decrementTime={() => updateTimer(minutCount + 1)}
 			resumeCallBack={resume}
-            resumeWord={resumeWord}
+            secondButtonText={secondButtonText}
 		/>
 	);
 };
